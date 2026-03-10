@@ -154,3 +154,4 @@ The trained model achieves strong predictive performance on the test set. Key me
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
+*Muhammad Ali Siddiqui © 2026*
