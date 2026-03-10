@@ -1,2 +1,3 @@
-.venv
+
 data/student_performance.csv
+__pycache__
