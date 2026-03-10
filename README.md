@@ -155,6 +155,10 @@ The notebook follows a structured ML pipeline:
 
 ##  Results
 
+![Model Comparison](images/combined_model_plots.png)
+
+Key performance metrics (calculated on the test set):
+
 The trained model achieves strong predictive performance on the test set. Key metrics:
 
 | Metric | Score |
