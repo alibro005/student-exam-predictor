@@ -155,7 +155,7 @@ The notebook follows a structured ML pipeline:
 
 ##  Results
 
-![Model Comparison](images/combined_model_plots.png)
+![Model Comparison](notebooks/images/combined_model_plots.png)
 
 Key performance metrics (calculated on the test set):
 
