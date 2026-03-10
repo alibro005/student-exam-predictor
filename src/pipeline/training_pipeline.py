@@ -9,7 +9,20 @@ def run_pipeline():
 
     df = preprocess_data(df)
 
-    X = df.drop(["exam_score", "student_id"], axis=1)
+    X = df[
+        [
+            "study_hours",
+            "self_study_hours",
+            "sleep_hours",
+            "focus_index",
+            "burnout_level",
+            "productivity_score",
+            "mental_health_score",
+            "screen_time_hours",
+            "social_media_hours",
+            "gaming_hours",
+        ]
+    ]
     y = df["exam_score"]
 
     train_models(X, y)
