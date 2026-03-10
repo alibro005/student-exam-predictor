@@ -1,6 +1,8 @@
 #  Student Exam Score Predictor
 
-A machine learning project that predicts student exam scores based on key academic and demographic factors. Built with Python and scikit-learn, this end-to-end notebook covers data exploration, model training, evaluation, and prediction.
+This project predicts student exam performance using regression models such as Linear Regression, Decision Tree, and Random Forest. It analyzes features such as study hours, sleep, focus, burnout, productivity, mental health, and screen/social/gaming time to identify patterns and provide predictions for new students.
+
+The project demonstrates end-to-end ML workflow, including data preprocessing, training, evaluation.
 
 ---
 
@@ -52,12 +54,21 @@ The dataset is stored in the `data/` directory and contains student-level record
 student-exam-predictor/
 │
 ├── data/                          # Dataset files
-│   └── sample_data.csv            # Raw student performance data
+│   └── student_performance.csv    # Raw student performance data
 │
-├── student_exam_predictor.ipynb   # Main Jupyter Notebook (ML pipeline)
+├── models/                        # Saved trained models
+│   └── best_model.pkl
+│
+├── src/                           # Python modules for training and prediction
+│   ├── data/                      # Data loading & preprocessing
+│   ├── models/                    # Training, evaluation, feature importance
+│   └── pipeline/
+├── notebook/                         
+│   ├── experimental.ipynb         # main jupyter notebook
+├── main.py                        # Optional script to run training pipeline
 ├── requirements.txt               # Python dependencies
-├── .gitignore                     # Git ignore rules
-└── README.md                      # Project documentation
+├── README.md                      # Project documentation
+└── .gitignore                     # Git ignore rules
 ```
 
 ---
@@ -118,7 +129,14 @@ Launch Jupyter Notebook in the project directory:
 jupyter notebook
 ```
 
-Then open `student_exam_predictor.ipynb` from the Jupyter interface and run all cells sequentially.
+Then open `experimentation.ipynb` from the Jupyter interface and run all cells sequentially.
+
+or Run:
+
+```bash
+python main.py
+```
+
 
 ---
 
