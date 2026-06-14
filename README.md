@@ -144,12 +144,12 @@ python main.py
 
 The notebook follows a structured ML pipeline:
 
-1. **Data Loading**  Import and inspect the raw dataset
-2. **Exploratory Data Analysis (EDA)**  Visualize distributions, correlations, and outliers
-3. **Data Preprocessing** Handle missing values, encode categorical variables, scale features
-4. **Model Training** Train regression models (e.g., Linear Regression, Random Forest)
-5. **Model Evaluation**  Assess performance using metrics such as MAE, RMSE, and R²
-6. **Prediction**  Generate exam score predictions on new/test data
+1. **Data Loading**:  Import and inspect the raw dataset
+2. **Exploratory Data Analysis (EDA)**:  Visualize distributions, correlations, and outliers
+3. **Data Preprocessing**: Handle missing values, encode categorical variables, scale features
+4. **Model Training**: Train regression models (e.g., Linear Regression, Random Forest)
+5. **Model Evaluation**:  Assess performance using metrics such as MAE, RMSE, and R²
+6. **Prediction**:  Generate exam score predictions on new/test data
 
 ---
 
