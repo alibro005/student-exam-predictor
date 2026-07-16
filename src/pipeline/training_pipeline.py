@@ -11,18 +11,21 @@ def run_pipeline():
 
     X = df[
         [
-            "study_hours",
-            "self_study_hours",
-            "sleep_hours",
-            "focus_index",
-            "burnout_level",
-            "productivity_score",
-            "mental_health_score",
-            "screen_time_hours",
-            "social_media_hours",
-            "gaming_hours",
+            'sex',
+            'age',
+            'studytime',
+            'failures',
+            'schoolsup',
+            'famsup',
+            'internet',
+            'health',
+            'absences',
+            'freetime',
+            'goout',
+            'G1',
+            'G2'
         ]
     ]
-    y = df["exam_score"]
+    y = df["G3"]
 
     train_models(X, y)
