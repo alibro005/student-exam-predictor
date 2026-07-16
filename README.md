@@ -1,179 +1,205 @@
-#  Student Exam Score Predictor
+# Student Performance Predictor
 
-This project predicts student exam performance using regression models such as Linear Regression, Decision Tree, and Random Forest. It analyzes features such as study hours, sleep, focus, burnout, productivity, mental health, and screen/social/gaming time to identify patterns and provide predictions for new students.
-
-The project demonstrates end-to-end ML workflow, including data preprocessing, training, evaluation.
+A machine learning project that predicts a student's **final grade (G3)** using demographic, academic, and lifestyle-related features from the UCI Student Performance dataset. The project compares multiple regression algorithms and deploys the best-performing model with a Streamlit web application.
 
 ---
 
-##  Table of Contents
+##  Overview
 
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Project Structure](#project-structure)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the Notebook](#running-the-notebook)
-- [Workflow](#workflow)
-- [Results](#results)
-- [License](#license)
+This project applies supervised machine learning techniques to predict students' final academic performance.
 
----
+Three regression models were trained and evaluated:
 
-## Overview
+* Linear Regression
+* Decision Tree Regressor
+* Random Forest Regressor
 
-This project predicts student exam performance using Random Forest Regression. By analyzing features such as study hours, self-study hours, sleep, focus, burnout, productivity, mental health, and screen/social/gaming time, the model helps identify performance patterns and allows predictions for new students.
+The **Random Forest Regressor** achieved the best performance and was selected for deployment.
 
 ---
 
 ##  Dataset
 
-The dataset is stored in the `data/` directory and contains student-level records with features such as:
+**Source:** UCI Machine Learning Repository – Student Performance Dataset
 
-| Feature             | Description                          |
-| ------------------- | ------------------------------------ |
-| study_hours         | Average hours spent studying per day |
-| self_study_hours    | Hours of self-study per day          |
-| sleep_hours         | Average sleep hours per day          |
-| focus_index         | Student’s focus level (0–1 scale)    |
-| burnout_level       | Burnout level (0–1 scale)            |
-| productivity_score  | Productivity score (0–100)           |
-| mental_health_score | Mental health score (0–100)          |
-| screen_time_hours   | Total screen time per day (hours)    |
-| social_media_hours  | Hours spent on social media per day  |
-| gaming_hours        | Hours spent on gaming per day        |
-| exam_score          | Final exam score (target variable)   |
+**Target Variable**
+
+* **G3** – Final Grade (0–20)
+
+**Features Used**
+
+| Feature   | Description                           |
+| --------- | ------------------------------------- |
+| sex       | Student gender                        |
+| age       | Student age                           |
+| studytime | Weekly study time                     |
+| failures  | Number of previous class failures     |
+| schoolsup | Extra educational support from school |
+| famsup    | Educational support from family       |
+| internet  | Internet access at home               |
+| health    | Current health status (1–5)           |
+| absences  | Number of school absences             |
+| freetime  | Free time after school (1–5)          |
+| goout     | Going out with friends (1–5)          |
+| G1        | First period grade                    |
+| G2        | Second period grade                   |
+
+**Target**
+
+* **G3 (Final Grade)**
 
 ---
 
 ##  Project Structure
 
-```
-student-exam-predictor/
+```text
+student-performance-predictor/
 │
-├── data/                          # Dataset files
-│   └── student_performance.csv    # Raw student performance data
+├── data/
+│   └── student-mat.csv
 │
-├── models/                        # Saved trained models
+├── models/
 │   └── best_model.pkl
 │
-├── src/                           # Python modules for training and prediction
-│   ├── data/                      # Data loading & preprocessing
-│   ├── models/                    # Training, evaluation, feature importance
+├── notebooks/
+│   ├── experimentation.ipynb
+│   └── images/
+│
+├── src/
+│   ├── data/
+│   ├── models/
 │   └── pipeline/
-├── notebook/                         
-│   ├── experimental.ipynb         # main jupyter notebook
-├── main.py                        # Optional script to run training pipeline
-├── requirements.txt               # Python dependencies
-├── README.md                      # Project documentation
-└── .gitignore                     # Git ignore rules
+│
+├── app.py
+├── main.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
 
 ##  Tech Stack
 
-| Tool | Purpose |
-|---|---|
-| Python 3.x | Core programming language |
-| Jupyter Notebook | Interactive development environment |
-| Pandas | Data manipulation and analysis |
-| NumPy | Numerical computing |
-| Matplotlib / Seaborn | Data visualization |
-| Scikit-learn | Machine learning models and evaluation |
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Scikit-learn
+* Joblib
+* Streamlit
+* Jupyter Notebook
 
 ---
 
 ##  Getting Started
 
-### Prerequisites
-
-Make sure you have the following installed:
-
-- Python 3.8 or higher
-- pip (Python package manager)
-- Jupyter Notebook or JupyterLab
-
-### Installation
-
-1. **Clone the repository:**
+### Clone the Repository
 
 ```bash
-git clone https://github.com/alibro005/student-exam-predictor.git
-cd student-exam-predictor
+git clone https://github.com/alibro005/student-performance-predictor.git
+
+cd student-performance-predictor
 ```
 
-2. **Create and activate a virtual environment (recommended):**
+### Create Virtual Environment
 
 ```bash
-python -m venv venv
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
+python -m venv .venv
 ```
 
-3. **Install the required dependencies:**
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+macOS/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Running the Notebook
+---
 
-Launch Jupyter Notebook in the project directory:
-
-```bash
-jupyter notebook
-```
-
-Then open `experimentation.ipynb` from the Jupyter interface and run all cells sequentially.
-
-or Run:
+##  Train the Model
 
 ```bash
 python main.py
 ```
 
+The training pipeline will:
+
+* Load the dataset
+* Preprocess the data
+* Train multiple regression models
+* Evaluate model performance
+* Save the best model in the `models/` directory
 
 ---
 
-##  Workflow
+##  Run the Streamlit App
 
-The notebook follows a structured ML pipeline:
+```bash
+streamlit run app.py
+```
 
-1. **Data Loading**:  Import and inspect the raw dataset
-2. **Exploratory Data Analysis (EDA)**:  Visualize distributions, correlations, and outliers
-3. **Data Preprocessing**: Handle missing values, encode categorical variables, scale features
-4. **Model Training**: Train regression models (e.g., Linear Regression, Random Forest)
-5. **Model Evaluation**:  Assess performance using metrics such as MAE, RMSE, and R²
-6. **Prediction**:  Generate exam score predictions on new/test data
+The application allows users to enter student information and predicts the expected final grade (G3).
 
 ---
 
-##  Results
+##  Machine Learning Workflow
 
-![Model Comparison](notebooks/images/combined_model_plots.png)
+1. Data Loading
+2. Exploratory Data Analysis (EDA)
+3. Data Preprocessing
+4. Feature Selection
+5. Model Training
+6. Model Evaluation
+7. Model Comparison
+8. Save Best Model
+9. Streamlit Deployment
 
-Key performance metrics (calculated on the test set):
+---
 
-The trained model achieves strong predictive performance on the test set. Key metrics:
+##  Model Performance
 
-| Metric | Score |
-|---|---|
-| R² Score | *See notebook* |
-| Mean Absolute Error (MAE) | *See notebook* |
-| Root Mean Squared Error (RMSE) | *See notebook* |
+The following models were evaluated:
 
-> Metrics are calculated on the test set.
+| Model                   |      MAE |     RMSE | R² Score |
+| ----------------------- | -------: | -------: | -------: |
+| Linear Regression       | **1.46** | **2.19** | **0.77** |
+| Random Forest Regressor | **1.08** | **1.81** | **0.84** |
+| Decision Tree Regressor | **1.28** | **2.49** | **0.70** |
+
+**Best Model:** Random Forest Regressor
+
+---
+
+##  Visualizations
+
+The project includes:
+
+* Feature correlation analysis
+* Actual vs Predicted plots
+* Model comparison
+* Feature importance (Random Forest)
 
 ---
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
+
+
 *Muhammad Ali Siddiqui © 2026*
+
+
