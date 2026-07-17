@@ -175,7 +175,7 @@ The following models were evaluated:
 | Model                   |      MAE |     RMSE | R² Score |
 | ----------------------- | -------: | -------: | -------: |
 | Linear Regression       | **1.46** | **2.19** | **0.77** |
-| Random Forest Regressor | **1.08** | **1.81** | **0.84** |
+| Random Forest Regressor | **1.08** | **1.81** | **0.85** |
 | Decision Tree Regressor | **1.28** | **2.49** | **0.70** |
 
 **Best Model:** Random Forest Regressor
